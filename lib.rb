@@ -80,7 +80,7 @@ class Book
 	# Book.status should
 #      return value of status hash
 #      unless value = available 
-#           return user  who last check out book, time checkout and, and time due
+#           return user who last check out book, time checkout and, and time due
 #      else 
 #      puts book is available for check out
 
@@ -89,11 +89,19 @@ class Book
 			when :available
 				"This book is availbale for check_out"
 			when :checked_out
-				"This book is checked out until <due>"
+				"This book is checked out by <check_out_to> on <out_time> until <due>"
 			when :overdue
-				"<user> checked out this book on <out_date> and it was due on <due> but they kept it for themselves."
+				"<user> checked out this book on <out_time and it was due on <due> but they kept it for themselves."
 			when :lost
 				"Some idiot lost this book"
+			end
 	end
 
+	def check_out(user)
+		@check_out_to = user
+		@status = :checked_out
+		@out_time = Time.now 
+		@due = 
+		puts "You have checkouted <book>. It is due in 7 days on 
+	end
 end
