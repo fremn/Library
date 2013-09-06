@@ -89,9 +89,9 @@ class Book
 			when :available
 				"This book is availbale for check_out"
 			when :checked_out
-				"This book is checked out by <check_out_to> on <out_time> until <due>"
+				"This book is checked out by <check_out_to> on #{@out_time} until #{@due}"
 			when :overdue
-				"<user> checked out this book on <out_time and it was due on <due> but they kept it for themselves."
+				"<user> checked out this book on <out_time and it was due on #{@due} but they kept it for themselves."
 			when :lost
 				"Some idiot lost this book"
 			end
@@ -100,9 +100,10 @@ class Book
 	def check_out(user)
 		@check_out_to = user
 		@status = :checked_out
-		@out_time = Time.now 
-		@due = Time.now + 
-		puts "You have checked out <book>. It is due in 7 days on"
+		@out_time = DateTime.now 
+		@due = @out_time + 7
+		puts "You have checked out <book>. It is due in 7 days at #{@due}"
 	end
 
 end
+
