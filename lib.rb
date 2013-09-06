@@ -5,7 +5,6 @@
 #    have Hash with author: title: => book_name, description: year: edition: status (options available checked_out, overdue, lost): reviews array. ratings (average of all)
 #     Have an array of arrays which lists every user who checked out the book, when they checked it out and when it was returned.
 #
-#
 # Book.status should
 #      return value of status hash
 #      unless value = available 
@@ -70,11 +69,31 @@ class Book
 		puts "Which edition?"
 		@edition = gets.chomp
 
-		@status = "Available"
+		@status = :available
 
 		puts "You have added #{@title} to the Library"
 
 		@rating = 3.0
+
+	end	
+
+	# Book.status should
+#      return value of status hash
+#      unless value = available 
+#           return user  who last check out book, time checkout and, and time due
+#      else 
+#      puts book is available for check out
+
+	def status
+			case @status
+			when :available
+				"This book is availbale for check_out"
+			when :checked_out
+				"This book is checked out until <due>"
+			when :overdue
+				"<user> checked out this book on <out_date> and it was due on <due> but they kept it for themselves."
+			when :lost
+				"Some idiot lost this book"
 	end
 
 end
