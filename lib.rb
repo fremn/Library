@@ -46,7 +46,7 @@
 # Actual Comments begin here
 
 
-
+require 'Date'
 
 class Library
 
@@ -101,7 +101,8 @@ class Book
 		@check_out_to = user
 		@status = :checked_out
 		@out_time = Time.now 
-		@due = 
-		puts "You have checkouted <book>. It is due in 7 days on 
+		@due = Time.now + 
+		puts "You have checked out <book>. It is due in 7 days on"
 	end
+
 end
