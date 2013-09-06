@@ -49,8 +49,7 @@
 require 'Date'
 
 class Library
-	attr_accessor 
-
+	attr_accessor :shelf
 	def initialize
 			@shelf =[]
 	end
@@ -64,6 +63,8 @@ end
 #    have Hash with author: title: , description: year: edition: status 
 # 		(options available checked_out, overdue, lost): reviews array. ratings (average of all)
 class Book
+	attr_accessor :title, :book
+
 	def initialize(title)
 		@title = title
 		puts "Please Describe the book"
@@ -86,10 +87,10 @@ class Book
 							:published => @year, 
 							:edition => @edition, 
 							:status => @status,
-							:rating => @rating
-							:review = nil
+							:rating => @rating,
+							:review => []
 						]
-		@shelf << @book
+		@shelf.push(@book)
 
 	end	
 
