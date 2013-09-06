@@ -49,17 +49,23 @@
 require 'Date'
 
 class Library
+	attr_accessor 
 
+	def initialize
+			@shelf =[]
+	end
+
+	def list_books
+		puts 
+	end
 end
 
 #Book class should 
 #    have Hash with author: title: , description: year: edition: status 
 # 		(options available checked_out, overdue, lost): reviews array. ratings (average of all)
-#     Have an array of arrays which lists every user who checked out the book, when they checked it out and when it was returned.
-
 class Book
-	def initialize
-
+	def initialize(title)
+		@title = title
 		puts "Please Describe the book"
 		@description = gets.chomp
 		
@@ -75,6 +81,16 @@ class Book
 
 		@rating = 3.0
 
+		@book = [ :title => "?", 
+							:description => @description, 
+							:published => @year, 
+							:edition => @edition, 
+							:status => @status,
+							:rating => @rating
+							:review = nil
+						]
+		@shelf << @book
+
 	end	
 
 	# Book.status should
@@ -89,7 +105,7 @@ class Book
 			when :available
 				"This book is availbale for check_out"
 			when :checked_out
-				"This book is checked out by <check_out_to> on #{@out_time} until #{@due}"
+				"This book is checked out by #{@check_out_to}on #{@out_time} until #{@due}"
 			when :overdue
 				"<user> checked out this book on <out_time and it was due on #{@due} but they kept it for themselves."
 			when :lost
@@ -104,6 +120,4 @@ class Book
 		@due = @out_time + 7
 		puts "You have checked out <book>. It is due in 7 days at #{@due}"
 	end
-
 end
-
